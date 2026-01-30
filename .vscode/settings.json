@@ -1,0 +1,23 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "[json]": {
+        "editor.defaultFormatter": "ms-dynamics-smb.al"
+    },
+    "CRS.ObjectNameSuffix": " TCL",
+    "CRS.FileNamePattern": "<ObjectTypeShortPascalCase> <ObjectId>.<ObjectNameShort>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternPageCustomizations": "<ObjectNameShort>.<ObjectTypeShortPascalCase>.al",
+    "CRS.OnSaveAlFileAction": "Reorganize",
+    "CRS.RenameWithGit": true,
+    "editor.accessibilityPageSize": 10,
+    "editor.formatOnSave": true,
+    "window.zoomLevel": 1,
+    "al.enableCodeAnalysis": true,
+    "al.enableCodeActions": true,
+    "editor.foldingMaximumRegions": 10000,
+    // "al.codeAnalyzers": [
+    //     "${CodeCop}",
+    //     "${AppSourceCop}",
+    //     "${UICop}"
+    // ]
+}

@@ -1,4 +1,4 @@
-report 50200   "Export Posted Sales Invoices"
+report 50200 "Export Posted Sales Invoices"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -22,8 +22,7 @@ report 50200   "Export Posted Sales Invoices"
         SalesInvHeader: Record "Sales Invoice Header";
         ExcelMgt: Codeunit "Posted Sales Invoice Excel Mgt";
     begin
-                // SalesInvHeader.CopyFilters(Rec);
-
+        // SalesInvHeader.CopyFilters(Rec);
         ExcelMgt.ExportPostedSalesInvoices(SalesInvHeader);
     end;
 }

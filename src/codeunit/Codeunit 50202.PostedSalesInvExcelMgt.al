@@ -1,10 +1,10 @@
-codeunit 50200 "Posted Sales Invoice Excel Mgt"
+codeunit 50202 "Posted Sales Inv Excel Mgt TCL"
 {
-    SingleInstance = false;
+
 
     procedure ExportPostedSalesInvoices(SalesInvHeader: Record "Sales Invoice Header")
-    var
-        HeaderWritten: Boolean;
+    
+    
     begin
         InitWorkbook();
         WriteHeaderSheetHeaders();
@@ -18,7 +18,7 @@ codeunit 50200 "Posted Sales Invoice Excel Mgt"
         FinishWorkbook();
     end;
 
-     local procedure InitWorkbook()
+    local procedure InitWorkbook()
     begin
         ExcelBuf.DeleteAll();
         ExcelBuf.CreateNewBook('Posted Sales Invoices Export');
@@ -44,28 +44,26 @@ codeunit 50200 "Posted Sales Invoice Excel Mgt"
     begin
         ExcelBuf.SelectOrAddSheet('Headers');
         ExcelBuf.NewRow();
-
         ExcelBuf.AddColumn(SalesInvHeader."Order No.", false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
         ExcelBuf.AddColumn(SalesInvHeader."Sell-to Customer Name", false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
         ExcelBuf.AddColumn(SalesInvHeader."Posting Date", false, '', false, false, false, '', ExcelBuf."Cell Type"::Date);
     end;
 
-    
     local procedure WriteLineRows(SalesInvHeader: Record "Sales Invoice Header")
     var
         SalesInvLine: Record "Sales Invoice Line";
     begin
         ExcelBuf.SelectOrAddSheet('Lines');
 
-        // if ExcelBuf.GetRowCount() = 0 then
-        //     WriteLineSheetHeaders();
+        if ExcelBuf.GetRowCount() = 0 then
+            WriteLineSheetHeaders();
 
         SalesInvLine.SetRange("Document No.", SalesInvHeader."No.");
         if SalesInvLine.FindSet() then
             repeat
                 ExcelBuf.NewRow();
                 ExcelBuf.AddColumn(SalesInvLine."Document No.", false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
-                ExcelBuf.AddColumn(Format(SalesInvLine.Type), false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
+                ExcelBuf.AddColumn(Format(SalesInvLine."Entry Type"), false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
                 ExcelBuf.AddColumn(SalesInvLine."No.", false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
                 ExcelBuf.AddColumn(SalesInvLine.Description, false, '', false, false, false, '', ExcelBuf."Cell Type"::Text);
                 ExcelBuf.AddColumn(SalesInvLine.Quantity, false, '', false, false, false, '', ExcelBuf."Cell Type"::Number);

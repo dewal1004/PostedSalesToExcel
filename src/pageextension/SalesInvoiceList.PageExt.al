@@ -19,6 +19,21 @@ pageextension 50200 "Sales Invoice List TCL" extends "Posted Sales Invoices"  //
                     PostedSalesInvoiceHandler.ExportPostedSalesInvoices(Rec);
                 end;
             }
+
+            action("ExportToExcel TCL")
+            {
+                ApplicationArea = All;
+                Caption = 'Export to Excel';
+                Image = "Export";
+
+                trigger OnAction()
+                var
+                    SalesInvHeader: Record "Sales Invoice Header";
+                begin
+                    SalesInvHeader.SetRange("No.", Rec."No.");
+                    Report.RunModal(Report::"Export Posted Sales Invoices", true, false, SalesInvHeader);
+                end;
+            }
         }
     }
 }

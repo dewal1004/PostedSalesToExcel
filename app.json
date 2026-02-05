@@ -2,7 +2,7 @@
   "id": "477c527b-683c-4497-9f95-941dcacba04c",
   "name": "PostedSalesToExcel",
   "publisher": "Teclink",
-  "version": "1.0.0.0",
+  "version": "1.0.0.2",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -16,8 +16,8 @@
   "application": "27.0.0.0",
   "idRanges": [
     {
-      "from": 50100,
-      "to": 50149
+      "from": 50200,
+      "to": 50299
     }
   ],
   "resourceExposurePolicy": {
